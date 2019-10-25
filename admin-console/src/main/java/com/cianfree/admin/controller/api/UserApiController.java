@@ -3,7 +3,6 @@ package com.cianfree.admin.controller.api;
 import com.cianfree.admin.controller.BaseController;
 import com.cianfree.admin.form.UserQueryForm;
 import com.cianfree.admin.manager.UserManager;
-import com.cianfree.admin.query.Page;
 import com.cianfree.admin.vo.Result;
 import com.cianfree.admin.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;

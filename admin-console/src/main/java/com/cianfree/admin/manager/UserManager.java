@@ -1,7 +1,8 @@
 package com.cianfree.admin.manager;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cianfree.admin.form.UserQueryForm;
-import com.cianfree.admin.query.Page;
+import com.cianfree.admin.model.User;
 import com.cianfree.admin.services.UserService;
 import com.cianfree.admin.util.ModelUtil;
 import com.cianfree.admin.vo.UserVo;
@@ -25,7 +26,7 @@ public class UserManager extends BaseManager {
         return ModelUtil.toUserVo(userService.get(id));
     }
 
-    public Page<UserVo> query(UserQueryForm query) {
-
+    public Page<User> query(UserQueryForm query, long pageNo, long pageSize) {
+        return userService.queryPage(query, pageNo, pageSize);
     }
 }

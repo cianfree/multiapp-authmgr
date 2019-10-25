@@ -1,5 +1,6 @@
 package com.cianfree.admin.form;
 
+import com.cianfree.admin.model.User;
 import lombok.Data;
 
 import java.util.Date;
@@ -10,7 +11,7 @@ import java.util.Date;
  * @since 2019-10-10
  */
 @Data
-public class UserQueryForm extends PageQueryForm {
+public class UserQueryForm extends User {
 
     /** 等值查询：应用ID，和 account 组成唯一主键 **/
     private Integer appId;

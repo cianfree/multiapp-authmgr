@@ -1,5 +1,9 @@
 package com.cianfree.admin.mapper;
 
+import com.alibaba.fastjson.JSON;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cianfree.admin.dao.mybatis.UserMapper;
 import com.cianfree.admin.model.User;
 import org.junit.Test;
@@ -31,6 +35,18 @@ public class UserMapperTest {
     @Test
     public void testInsert() {
 
+    }
+
+    @Test
+    public void testPage() {
+
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>(new User());
+
+        Page<User> page = new Page<>(1, 10);
+
+        IPage<User> userPage = userMapper.selectPage(page, queryWrapper);
+
+        System.out.println(JSON.toJSONString(userPage));
     }
 
 }

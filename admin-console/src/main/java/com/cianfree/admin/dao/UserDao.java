@@ -1,5 +1,7 @@
 package com.cianfree.admin.dao;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.cianfree.admin.form.UserQueryForm;
 import com.cianfree.admin.model.User;
 
 /**
@@ -15,4 +17,14 @@ public interface UserDao {
      * @return user
      */
     User get(Long uid);
+
+    /**
+     * 分页查询用户信息
+     *
+     * @param query    查询条件
+     * @param pageNo   第几页
+     * @param pageSize 每页多少
+     * @return 分页数据
+     */
+    Page<User> queryPage(UserQueryForm query, long pageNo, long pageSize);
 }
