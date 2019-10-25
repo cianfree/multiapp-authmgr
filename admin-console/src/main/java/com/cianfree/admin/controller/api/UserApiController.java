@@ -1,10 +1,11 @@
 package com.cianfree.admin.controller.api;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cianfree.admin.controller.BaseController;
 import com.cianfree.admin.form.UserQueryForm;
 import com.cianfree.admin.manager.UserManager;
+import com.cianfree.admin.model.User;
 import com.cianfree.admin.vo.Result;
-import com.cianfree.admin.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,8 +31,8 @@ public class UserApiController extends BaseController {
      * @return user
      */
     @GetMapping("/api/user/get/{id}")
-    public Result<UserVo> get(@PathVariable("id") Long id) {
-        return new Result<UserVo>(userManager.get(id));
+    public Result<User> get(@PathVariable("id") Long id) {
+        return new Result<User>(userManager.get(id));
     }
 
     /**
@@ -41,7 +42,7 @@ public class UserApiController extends BaseController {
      * @return 用户列表
      */
     @PostMapping("/api/user/query")
-    public Result<Page<UserVo>> query(UserQueryForm query) {
-        return new Result<Page<UserVo>>(userManager.query(query));
+    public Result<Page<User>> query(UserQueryForm query, Long pageNo, Long pageSize) {
+        return new Result<>(userManager.query(query, pageNo, pageSize));
     }
 }
