@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS `app` (
   `remark` longtext COMMENT '备注信息',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `extend` longtext COMMENT '扩展信息',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_role_appid` (`app_id`) USING BTREE COMMENT '唯一索引'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -33,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `remark` longtext COMMENT '备注信息',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `extend` longtext COMMENT '扩展信息',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_user_appid_account` (`app_id`,`account`) USING BTREE COMMENT '唯一索引'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -47,6 +49,7 @@ CREATE TABLE IF NOT EXISTS `role` (
   `remark` longtext COMMENT '备注信息',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `extend` longtext COMMENT '扩展信息',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_appid_code` (`app_id`,`code`) USING BTREE COMMENT '唯一索引'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -55,7 +58,8 @@ CREATE TABLE IF NOT EXISTS `role` (
 CREATE TABLE IF NOT EXISTS `privilege` (
   `id` bigint(20) AUTO_INCREMENT NOT NULL COMMENT '自增主键ID',
   `app_id` int(11) NOT NULL COMMENT '所属APPID，和code构成唯一键',
-  `code` varchar(50) NOT NULL COMMENT '权限代码，和 appId 构成唯一键',
+  `code` varchar(50) NOT NULL COMMENT '权限代码，',
+  `code_path` varchar(50) NOT NULL COMMENT '权限代码，和 appId 构成唯一键',
   `parent_code` varchar(50) NOT NULL COMMENT '上级权限代码',
   `show_menu` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否展示为菜单',
   `enabled` tinyint(1) NOT NULL DEFAULT 1 COMMENT '用户状态，是否启用，1-启用，0-禁用',
@@ -65,6 +69,7 @@ CREATE TABLE IF NOT EXISTS `privilege` (
   `remark` longtext COMMENT '备注信息',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `extend` longtext COMMENT '扩展信息',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_priv_appid_code` (`app_id`,`code`) USING BTREE COMMENT '唯一索引'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -76,6 +81,7 @@ CREATE TABLE IF NOT EXISTS `user_role` (
   `user_account` varchar(100) NOT NULL COMMENT '用户账号',
   `role_code` varchar(50) NOT NULL COMMENT '角色代码',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `extend` longtext COMMENT '扩展信息',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_ur_appid_acc_code` (`app_id`,`user_account`,`role_code`) USING BTREE COMMENT '唯一索引'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -88,8 +94,8 @@ CREATE TABLE IF NOT EXISTS `role_privilege` (
   `role_code` varchar(50) NOT NULL COMMENT '角色代码',
   `privilege_code` varchar(50) NOT NULL COMMENT '权限代码',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `extend` longtext COMMENT '扩展信息',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_rp_appid_rc_pc` (`app_id`,`role_code`,`privilege_code`) USING BTREE COMMENT '唯一索引'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 

@@ -28,4 +28,7 @@ public class UserRole {
 
     /** 创建时间 **/
     private Date createTime;
+
+    /** 扩展字段信息 **/
+    private String extend;
 }

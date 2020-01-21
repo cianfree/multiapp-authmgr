@@ -2,8 +2,8 @@ package com.cianfree.admin.services;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cianfree.admin.dao.UserDao;
-import com.cianfree.admin.form.UserQueryForm;
 import com.cianfree.admin.model.User;
+import com.cianfree.admin.query.UserQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +35,7 @@ public class UserService extends BaseService {
      * @param pageSize 每页查询数量
      * @return 分页数据
      */
-    public Page<User> queryPage(UserQueryForm query, long pageNo, long pageSize) {
+    public Page<User> queryPage(UserQuery query, long pageNo, long pageSize) {
         return userDao.queryPage(query, pageNo, pageSize);
     }
 }

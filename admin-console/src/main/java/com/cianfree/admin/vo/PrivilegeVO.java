@@ -1,21 +1,21 @@
-package com.cianfree.admin.model;
+package com.cianfree.admin.vo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.Date;
+import java.util.List;
 
 /**
- * 权限项
- * @author Arvin
- * @since 2019-10-10
+ * @author xiajiqiu
+ * @version 1.0
+ * @since 2019/12/31 22:02
  */
 @Data
-public class Privilege {
+@ToString
+public class PrivilegeVO {
 
     /** 主键ID **/
-    @TableId(type = IdType.AUTO)
     private Long id;
 
     /** 所属应用ID **/
@@ -54,4 +54,6 @@ public class Privilege {
     /** 扩展字段信息 **/
     private String extend;
 
+    /** 子权限列表 **/
+    private List<PrivilegeVO> children;
 }

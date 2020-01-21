@@ -53,4 +53,7 @@ public class App {
     /** 最后一次更新事件 **/
     private Date updateTime;
 
+    /** 扩展字段信息 **/
+    private String extend;
+
 }

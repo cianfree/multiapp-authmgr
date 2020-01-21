@@ -34,4 +34,8 @@ public class Role {
 
     /** 更新时间 **/
     private Date updateTime;
+
+    /** 扩展字段信息 **/
+    private String extend;
+
 }

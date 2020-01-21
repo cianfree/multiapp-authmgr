@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cianfree.admin.dao.UserDao;
 import com.cianfree.admin.dao.mybatis.UserMapper;
-import com.cianfree.admin.form.UserQueryForm;
 import com.cianfree.admin.model.User;
+import com.cianfree.admin.query.UserQuery;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
@@ -31,11 +31,11 @@ public class UserDaoCompositeImpl implements UserDao {
     }
 
     @Override
-    public Page<User> queryPage(UserQueryForm query, long pageNo, long pageSize) {
+    public Page<User> queryPage(UserQuery query, long pageNo, long pageSize) {
 
         Page<User> page = new Page<>(pageNo, pageSize);
 
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>(new User());
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
 
         userMapper.selectPage(page, queryWrapper);
 
